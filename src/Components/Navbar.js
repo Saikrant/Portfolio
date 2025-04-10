@@ -1,19 +1,37 @@
-import React from 'react';
-import '../Css/Navbar.css';
+import React, { useState } from 'react';
+import './Navbar.css';
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
+  };
+
+  // When a nav link is clicked, close the menu (mobile view)
+  const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <a href="#hero">My Portfolio</a> 
+          <a href="#hero">Sai Kranth Koneru</a>
         </div>
-        <ul className="navbar-links">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
+          <ul className="navbar-links">
+            <li><a href="#hero" onClick={handleLinkClick}>Home</a></li>
+            <li><a href="#about" onClick={handleLinkClick}>About</a></li>
+            <li><a href="#projects" onClick={handleLinkClick}>Projects</a></li>
+            <li><a href="#contact" onClick={handleLinkClick}>Contact</a></li>
+          </ul>
+        </div>
+        <div className="hamburger" onClick={toggleMenu}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
       </div>
     </nav>
   );

@@ -30,7 +30,7 @@ const skillCategories = [
   {
     category: "DevOps",
     skills: [
-      { name: "Azure DevOps", icon: "/assets/icons/icons8-azure-48.png" },
+      { name: "Azure", icon: "/assets/icons/icons8-azure-48.png" },
       { name: "Git", icon: "/assets/icons/icons8-git-48.png" },
       { name: "Docker", icon: "/assets/icons/icons8-docker-48.png" },
       { name: "Kubernetes", icon: "/assets/icons/icons8-kubernetes-48.png" }
@@ -38,7 +38,6 @@ const skillCategories = [
   }
 ];
 
-// Define variants for the overall container, categories, and items
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
@@ -63,13 +62,14 @@ const SkillHighlights = () => {
       viewport={{ once: false, amount: 0.5 }}
       variants={containerVariants}
     >
-            <motion.h2 
+      <motion.h2 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.5 }}
         transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.5 }}
       >
-Technical Skill Set      </motion.h2>
+        Technical Skill Set
+      </motion.h2>
       <div className="skill-categories">
         {skillCategories.map((group, idx) => (
           <motion.div key={idx} className="skill-category" variants={itemVariants}>

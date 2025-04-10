@@ -1,88 +1,100 @@
 .skills-section {
-    padding: 20px;
-    background: #282c34; /* or #fff, #282c34, etc. */
-    text-align: center;
-    color: #007BFF; /* Adjust text color based on background */
-  }
-  
-  .skills-section h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #f2f2f2;
-  }
-  
-  /* Container that holds all four categories horizontally */
-  .skill-categories {
-    display: flex;           /* Lay them out side by side */
-    justify-content: center; /* Center them horizontally */
-    align-items: flex-start; /* Top-align the category boxes */
-    flex-wrap: wrap;         /* Wrap to next row if the screen is too narrow */
-    gap: 40px;               /* Space between categories */
-    margin-top: 20px;
-  }
-  
-  /* Each category box */
+  padding: 40px 20px;
+  background: #282c34; /* Adjust background as needed */
+  text-align: center;
+  color: #007BFF; /* Primary color for text */
+}
+
+.skills-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #f2f2f2;
+}
+
+/* Container for all categories arranged side by side */
+.skill-categories {
+  display: flex;
+  flex-wrap: wrap;         /* Wrap if screen is narrow */
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+/* Each category box */
+.skill-category {
+  background: #282c34; /* Matches section background for a subtle look */
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Category heading */
+.skill-category h3 {
+  font-size: 1.3em;
+  color: white;  /* Fixed the color value */
+  margin-bottom: 12px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 16px;
+  justify-content: flex-start;
+  margin-top: 8px;
+  padding: 4px 0 4px 5px; /* <-- Add left padding here */
+}
+
+/* Custom Scrollbar Styling for WebKit-based browsers */
+.skills-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.skills-grid::-webkit-scrollbar-track {
+  background-color: #282c34;
+}
+
+.skills-grid::-webkit-scrollbar-thumb {
+  background-color: #007BFF;
+  border-radius: 4px;
+}
+
+.skills-grid::-webkit-scrollbar-thumb:hover {
+  background-color: #0056b3;
+}
+
+/* Each skill item */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px; /* Ensure minimal width */
+}
+
+/* Skill icon styling */
+.skill-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+/* Skill label */
+.skill-item span {
+  font-size: 0.9em;
+  color: white;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
   .skill-category {
-    background: #282c34; /* Subtle background to visually separate each box */
-    border-radius: 6px;
-    padding: 20px;
-    text-align: center;
+    width: 180px;  /* Reduced width for mobile screens */
+    padding: 12px;
   }
   
-  .skill-category h3 {
-    font-size: 1.3em;
-    color: w;
-    margin-bottom: 12px;
-  }
-  
-  /* Lay out skill items in a row, with horizontal scrolling if too many */
-  .skills-grid {
-    display: flex;       
-    flex-wrap: nowrap;   /* Keep them all in one row within the category */
-    overflow-x: auto;    /* Horizontal scroll if there's an overflow */
-    gap: 16px;           /* Space between skill icons */
-    justify-content: center;
-    margin-top: 8px;
-    padding-bottom: 4px; /* Some bottom space if scrolled */
-  }
-  
-  /* Each skill icon & label */
-  .skill-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 60px; /* Minimum width so label doesn't break awkwardly */
-  }
-  
-  /* Adjust icon sizes as desired */
   .skill-item img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    margin-bottom: 6px;
+    width: 32px;
+    height: 32px;
   }
-  
-  .skill-item span {
-    font-size: 0.9em;
-    color: white;
-    white-space: nowrap; /* Keep skill name in one line */
-  }
-  
-  /* Optional: Hide horizontal scrollbar for WebKit browsers */
-  .skills-grid::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Make the design responsive if desired */
-  @media (max-width: 768px) {
-    .skill-category {
-      width: 180px; /* Slightly reduce width for mobile */
-      padding: 12px;
-    }
-  
-    .skill-item img {
-      width: 32px;
-      height: 32px;
-    }
-  }
-  
+}
