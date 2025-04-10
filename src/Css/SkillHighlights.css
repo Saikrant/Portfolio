@@ -1,0 +1,88 @@
+.skills-section {
+    padding: 20px;
+    background: #282c34; /* or #fff, #282c34, etc. */
+    text-align: center;
+    color: #007BFF; /* Adjust text color based on background */
+  }
+  
+  .skills-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #f2f2f2;
+  }
+  
+  /* Container that holds all four categories horizontally */
+  .skill-categories {
+    display: flex;           /* Lay them out side by side */
+    justify-content: center; /* Center them horizontally */
+    align-items: flex-start; /* Top-align the category boxes */
+    flex-wrap: wrap;         /* Wrap to next row if the screen is too narrow */
+    gap: 40px;               /* Space between categories */
+    margin-top: 20px;
+  }
+  
+  /* Each category box */
+  .skill-category {
+    background: #282c34; /* Subtle background to visually separate each box */
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .skill-category h3 {
+    font-size: 1.3em;
+    color: w;
+    margin-bottom: 12px;
+  }
+  
+  /* Lay out skill items in a row, with horizontal scrolling if too many */
+  .skills-grid {
+    display: flex;       
+    flex-wrap: nowrap;   /* Keep them all in one row within the category */
+    overflow-x: auto;    /* Horizontal scroll if there's an overflow */
+    gap: 16px;           /* Space between skill icons */
+    justify-content: center;
+    margin-top: 8px;
+    padding-bottom: 4px; /* Some bottom space if scrolled */
+  }
+  
+  /* Each skill icon & label */
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px; /* Minimum width so label doesn't break awkwardly */
+  }
+  
+  /* Adjust icon sizes as desired */
+  .skill-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 6px;
+  }
+  
+  .skill-item span {
+    font-size: 0.9em;
+    color: white;
+    white-space: nowrap; /* Keep skill name in one line */
+  }
+  
+  /* Optional: Hide horizontal scrollbar for WebKit browsers */
+  .skills-grid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Make the design responsive if desired */
+  @media (max-width: 768px) {
+    .skill-category {
+      width: 180px; /* Slightly reduce width for mobile */
+      padding: 12px;
+    }
+  
+    .skill-item img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  

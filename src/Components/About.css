@@ -1,0 +1,132 @@
+/* Overall About section container */
+.about-section {
+  padding: 40px 20px;
+  background-color: #282c34;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Container for both timelines side by side */
+.timelines-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Each column holds one timeline */
+.timeline-column {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+}
+
+/* Column heading */
+.column-heading {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #007BFF;
+}
+
+/* Vertical timeline container */
+.timeline {
+  position: relative;
+  padding: 10px 0;
+}
+
+/* CONNECTING LINE: Adjusted vertical line for medium size markers */
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: -4px; /* with marker center at -4px */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #007BFF;
+}
+
+/* Each timeline item */
+.timeline-item {
+  position: relative;
+  padding: 10px 20px;
+  margin-bottom: 15px; /* increased margin for medium spacing */
+  text-align: left;
+}
+
+/* Marker for each timeline item (medium size) */
+.timeline-marker {
+  position: absolute;
+  top: 10px;
+  left: -12px; /* adjusted to center marker */
+  width: 16px;
+  height: 16px;
+  background: #007BFF;
+  border-radius: 50%;
+}
+
+/* Content for timeline items (increased padding and font size) */
+.timeline-content {
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;  /* increased padding */
+  font-size: 1em;      /* increased font size */
+}
+
+/* Role and duration styling */
+.role {
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.duration {
+  font-style: italic;
+  color: #777;
+  margin: 2px 0;
+}
+
+/* Tooltip styling for company names */
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  color: #007BFF;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .timelines-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeline-column {
+    max-width: 100%;
+  }
+}
