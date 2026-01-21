@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './About.css';
 
 // Timeline data for experience items
 const experienceItems = [
@@ -41,61 +40,92 @@ const educationItems = [
   }
 ];
 
-// Define motion variants for individual timeline items
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
+
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition:{ type: 'spring', stiffness: 80, damping: 20, delay: 0.5 }
-}
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0 }
 };
 
 const About = () => {
   return (
-    <section id="about" className="about-section">
-      <motion.div 
-        className="timelines-container"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
-      >
-        
-        {/* Experience Timeline */}
-        <div className="timeline-column">
-          <h3 className="column-heading">Experience</h3>
-          <div className="timeline">
-            {experienceItems.map((item, index) => (
-              <motion.div key={index} className="timeline-item" variants={itemVariants}>
-                <motion.div className="timeline-marker" variants={itemVariants} />
-                <motion.div className="timeline-content" variants={itemVariants}>
-                  <h4 className="tooltip" data-tooltip={item.skills.join(', ')}>
-                    {item.company}
-                  </h4>
-                  <p className="role">{item.role}</p>
-                  <p className="duration">{item.duration}</p>
+    <section id="about" className="py-24 bg-primary text-white relative overflow-hidden">
+      {/* Ambient background */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          className="grid md:grid-cols-2 gap-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          {/* Experience Column */}
+          <div>
+            <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-10 flex items-center gap-3">
+              <span className="w-2 h-8 bg-accent rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)]"></span>
+              Experience
+            </motion.h2>
+            <div className="border-l-2 border-white/5 ml-3 space-y-12 relative">
+              {/* Glowing line overlay that follows scroll could go here, but simple border-l with glow on dots is cleaner */}
+
+              {experienceItems.map((item, index) => (
+                <motion.div key={index} variants={itemVariants} className="relative pl-8 group">
+                  {/* Glowing Dot */}
+                  <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-primary border-2 border-accent group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(56,189,248,0.6)] transition-all duration-300"></div>
+
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-accent/30 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm group-hover:-translate-y-1 shadow-lg">
+                    <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">{item.company}</h3>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4 text-sm text-gray-400">
+                      <span className="font-semibold text-gray-300">{item.role}</span>
+                      <span className="hidden sm:inline">•</span>
+                      <span>{item.duration}</span>
+                    </div>
+                    <p className="text-gray-400 mb-6 leading-relaxed">{item.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {item.skills.map((skill, i) => (
+                        <span key={i} className="px-2 py-1 text-xs rounded bg-black/20 text-accent/80 border border-white/5">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </motion.div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-        {/* Education Timeline */}
-        <div className="timeline-column">
-          <h3 className="column-heading">Education</h3>
-          <div className="timeline">
-            {educationItems.map((item, index) => (
-              <motion.div key={index} className="timeline-item" variants={itemVariants}>
-                <motion.div className="timeline-marker" variants={itemVariants} />
-                <motion.div className="timeline-content" variants={itemVariants}>
-                  <h4 style={{ color: "#007BFF" }}>{item.institution}</h4>
-                  <p className="role">{item.degree}</p>
-                  <p className="duration">{item.duration}</p>
+
+          {/* Education Column */}
+          <div>
+            <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-10 flex items-center gap-3">
+              <span className="w-2 h-8 bg-purple-500 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.5)]"></span>
+              Education
+            </motion.h2>
+            <div className="border-l-2 border-white/5 ml-3 space-y-12">
+              {educationItems.map((item, index) => (
+                <motion.div key={index} variants={itemVariants} className="relative pl-8 group">
+                  {/* Glowing Dot */}
+                  <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-primary border-2 border-purple-500 group-hover:bg-purple-500 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.6)] transition-all duration-300"></div>
+
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm group-hover:-translate-y-1 shadow-lg">
+                    <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">{item.institution}</h3>
+                    <div className="text-sm text-gray-400 mb-2">{item.duration}</div>
+                    <p className="text-lg text-gray-300">{item.degree}</p>
+                  </div>
                 </motion.div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 };
