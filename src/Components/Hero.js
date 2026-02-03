@@ -139,7 +139,7 @@ const Hero = () => {
           {/* Stats Bar */}
           <div className="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12 border-t border-white/10 pt-8">
             <div>
-              <h3 className="text-3xl font-bold text-white">3+</h3>
+              <h3 className="text-3xl font-bold text-white">4+</h3>
               <p className="text-sm text-gray-400 uppercase tracking-wider">Years Exp.</p>
             </div>
             <div>
