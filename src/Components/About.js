@@ -12,17 +12,17 @@ const experienceItems = [
   },
   {
     company: "Starmark Software Pvt Ltd",
-    role: "Associate Software Engineer",
+    role: "Software Engineer",
     duration: "Aug 2021 – Nov 2022",
     description: "Built secure REST APIs and collaborated with product teams to enhance web applications.",
-    skills: ["C#", "JavaScript", "ReactJS", "SQL", "Kubernetes"]
+    skills: ["C#", "JavaScript", "ReactJS", "SQL", "Kubernetes", "Figma", "Adobe XD", "HTML", "CSS", "Responsive Design"]
   },
   {
     company: "Traxeat",
-    role: "UI/UX Designer Intern",
-    duration: "Oct 2020 – Jan 2021",
+    role: "Associate Software Engineer",
+    duration: "June 2020 – May 2021",
     description: "Designed intuitive user interfaces and prototypes for web and mobile applications.",
-    skills: ["Figma", "Adobe XD", "HTML", "CSS", "Responsive Design"]
+    skills: ["Java", "JavaScript", "ReactJS", "SQL", "Kubernetes", "Figma", "Adobe XD", "HTML", "CSS", "Responsive Design"]
   }
 ];
 
