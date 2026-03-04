@@ -1,24 +1,37 @@
 import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Cursor from './Components/Cursor';
 import Navbar from './Components/Navbar';
 import Hero from './Components/Hero';
-import About from './Components/About';
-import SkillHighlights from './Components/SkilHighlights';
+import MarqueeStrip from './Components/MarqueeStrip';
+import Pillars from './Components/Pillars';
+import Projects from './Components/Projects';
+import Experience from './Components/Experience';
+import Skills from './Components/Skills';
 import Contact from './Components/Contact';
-import ProjectSection from './Components/Project';
 
 const App = () => {
   return (
-    <div className="bg-primary min-h-screen text-white font-sans selection:bg-accent selection:text-primary">
-      <Navbar />
-
-      <main>
-        <Hero />
-        <About />
-        <SkillHighlights />
-        <ProjectSection />
-        <Contact />
-      </main>
-    </div>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="selection:bg-accent-pale selection:text-accent"
+      >
+        <Cursor />
+        <Navbar />
+        <main>
+          <Hero />
+          <MarqueeStrip />
+          <Pillars />
+          <Projects />
+          <Skills />
+          <Experience />
+          <Contact />
+        </main>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

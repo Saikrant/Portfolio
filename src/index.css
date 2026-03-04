@@ -3,40 +3,207 @@
 @tailwind utilities;
 
 :root {
-  --background-color: #0f172a;
-  --text-color: #e2e8f0;
+  --cream: #F5F2EB;
+  --white: #FDFCF9;
+  --ink: #0D0D0D;
+  --ink-muted: #4A4A4A;
+  --ink-light: #9A9A9A;
+  --accent: #C8410A;
+  --accent-light: #F0724A;
+  --accent-pale: #FDF0EB;
+  --border: #E0DDD6;
+  --card-bg: #EDEAE3;
+  --dark: #0D0D0D;
+  --dark-card: #1A1A1A;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background: var(--cream);
+  font-family: var(--font-body);
+  color: var(--ink);
+  cursor: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  color: var(--text-color);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  cursor: none;
 }
 
-/* Scrollbar Styling */
+::selection {
+  background: var(--accent-pale);
+  color: var(--accent);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--cream);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 5px;
+  background: var(--border);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: var(--ink-light);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Floating animation for chips */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-delayed {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Pulse animation for timeline dots */
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(200, 65, 10, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(200, 65, 10, 0);
+  }
+}
+
+/* Pulse animation for available dot */
+@keyframes pulse-green {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+}
+
+/* Custom cursor styles */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+}
+
+.cursor-ring.expanded {
+  width: 60px;
+  height: 60px;
+  border-color: var(--accent-light);
+}
+
+/* Mobile: hide custom cursor */
+@media (max-width: 768px) {
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+
+  body,
+  *,
+  *::before,
+  *::after {
+    cursor: auto;
+  }
+}
+
+/* Sticky card stacking — featured projects */
+.projects-sticky-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.project-card-sticky {
+  position: sticky;
+  top: 80px;
+  height: 85vh;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 32px;
+}
+
+/* Mobile: disable sticky, stack normally */
+@media (max-width: 768px) {
+  .projects-sticky-wrapper {
+    height: auto !important;
+    padding: 0 16px;
+  }
+
+  .project-card-sticky {
+    position: relative;
+    top: 0;
+    height: auto;
+    min-height: 75vh;
+    border-radius: 24px;
+  }
 }
