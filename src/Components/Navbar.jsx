@@ -22,8 +22,8 @@ const Navbar = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                        ? 'py-3 border-b border-border'
-                        : 'py-5'
+                    ? 'py-3 border-b border-border'
+                    : 'py-5'
                     }`}
                 style={{
                     background: 'rgba(245, 242, 235, 0.92)',
@@ -34,7 +34,7 @@ const Navbar = () => {
                 <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                     {/* Logo */}
                     <a
-                        href="#"
+                        href="/"
                         className="font-display text-2xl font-bold text-ink no-underline"
                         data-cursor
                     >
