@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiArrowRight } from 'react-icons/fi';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FiGithub, FiArrowRight } from 'react-icons/fi';
 import { projectsData } from '../data/portfolioData';
 
 const StickyFeaturedCard = ({ project, index, total, wrapperRef }) => {
